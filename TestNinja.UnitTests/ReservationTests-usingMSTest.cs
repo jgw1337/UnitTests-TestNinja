@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestNinja.Fundamentals;
 
 namespace TestNinja.UnitTests
@@ -7,7 +6,7 @@ namespace TestNinja.UnitTests
     // Using MSTest built-in to Visual Studio
     // ...however, MSTest can only test *all* unit tests
     [TestClass]
-    public class ReservationTests
+    public class ReservationTests_usingMSTest
     {
         [TestMethod]
         public void CanBeCancelledBy_UserIsAdmin_ReturnsTrue()

@@ -18,3 +18,12 @@ C:\Users\jgwang\Desktop\jgw\Projects\Unit Tests - TestNinja\TestNinja.UnitTests\
 C:\Users\jgwang\Desktop\jgw\Projects\Unit Tests - TestNinja\TestNinja.UnitTests\obj\Debug\TestNinja.UnitTests.csproj.CoreCompileInputs.cache
 C:\Users\jgwang\Desktop\jgw\Projects\Unit Tests - TestNinja\TestNinja.UnitTests\obj\Debug\TestNinja.UnitTests.dll
 C:\Users\jgwang\Desktop\jgw\Projects\Unit Tests - TestNinja\TestNinja.UnitTests\obj\Debug\TestNinja.UnitTests.pdb
+C:\Users\jgwang\Desktop\jgw\Projects\Unit Tests - TestNinja\TestNinja.UnitTests\bin\Debug\NUnit3.TestAdapter.dll
+C:\Users\jgwang\Desktop\jgw\Projects\Unit Tests - TestNinja\TestNinja.UnitTests\bin\Debug\nunit.engine.dll
+C:\Users\jgwang\Desktop\jgw\Projects\Unit Tests - TestNinja\TestNinja.UnitTests\bin\Debug\nunit.engine.api.dll
+C:\Users\jgwang\Desktop\jgw\Projects\Unit Tests - TestNinja\TestNinja.UnitTests\bin\Debug\Mono.Cecil.dll
+C:\Users\jgwang\Desktop\jgw\Projects\Unit Tests - TestNinja\TestNinja.UnitTests\bin\Debug\Mono.Cecil.Pdb.dll
+C:\Users\jgwang\Desktop\jgw\Projects\Unit Tests - TestNinja\TestNinja.UnitTests\bin\Debug\Mono.Cecil.Mdb.dll
+C:\Users\jgwang\Desktop\jgw\Projects\Unit Tests - TestNinja\TestNinja.UnitTests\bin\Debug\Mono.Cecil.Rocks.dll
+C:\Users\jgwang\Desktop\jgw\Projects\Unit Tests - TestNinja\TestNinja.UnitTests\bin\Debug\nunit.framework.dll
+C:\Users\jgwang\Desktop\jgw\Projects\Unit Tests - TestNinja\TestNinja.UnitTests\bin\Debug\nunit.framework.xml
