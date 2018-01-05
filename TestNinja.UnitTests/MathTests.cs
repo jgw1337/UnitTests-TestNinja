@@ -15,6 +15,7 @@ namespace TestNinja.UnitTests
         }
 
         [Test]
+        [Ignore("Temporaily disabling to test NUnit's Ignore attribute")]
         public void Add_AddTwoNumbers_ReturnsSum()
         {
             // Arrange
