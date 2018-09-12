@@ -61,6 +61,7 @@
     <Compile Include="ReservationTests-usingMSTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReservationTests-usingNUnit.cs" />
+    <Compile Include="StackTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
