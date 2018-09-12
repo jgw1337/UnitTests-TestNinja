@@ -1,8 +1,7 @@
 ﻿using NUnit.Framework;
 using Shouldly;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using TestNinja.Fundamentals;
 
 namespace TestNinja.UnitTests
 {
@@ -25,10 +24,23 @@ namespace TestNinja.UnitTests
         public void Count_WhenCalled_ReturnsCountOfList()
         {
             // Act
-            var result = _fruits.Count();
+            var result = _fruits.Count;
 
             // Assert
             result.ShouldBe(3);
+        }
+
+        [Test]
+        public void Count_WhenCalledAfterAddingItem_ReturnsCountOfList()
+        {
+            // Arrange
+            _fruits.Push("date");
+
+            // Act
+            var result = _fruits.Count;
+
+            // Assert
+            result.ShouldBe(4);
         }
 
         [Test]
@@ -39,8 +51,20 @@ namespace TestNinja.UnitTests
 
             // Assert
             result.ShouldSatisfyAllConditions(
-                () => _fruits.Count().ShouldBe(3),
+                () => _fruits.Count.ShouldBe(3),
                 () => result.ShouldBe("cherry")
+            );
+        }
+
+        [Test]
+        public void Peek_WhenCalledOnEmptyStack_ThrowsInvalidOperationException()
+        {
+            // Arrange
+            var stack = new Stack<string>();
+
+            // Act and Assert
+            Should.Throw<InvalidOperationException>(
+                () => stack.Peek()
             );
         }
 
@@ -52,8 +76,20 @@ namespace TestNinja.UnitTests
 
             // Assert
             result.ShouldSatisfyAllConditions(
-                () => _fruits.Count().ShouldBe(2),
+                () => _fruits.Count.ShouldBe(2),
                 () => result.ShouldBe("cherry")
+            );
+        }
+
+        [Test]
+        public void Pop_WhenCalledOnEmptyStack_ThrowsInvalidOperationException()
+        {
+            // Arrange
+            var stack = new Stack<string>();
+
+            // Act
+            Should.Throw<InvalidOperationException>(
+                () => stack.Pop()
             );
         }
 
@@ -73,7 +109,7 @@ namespace TestNinja.UnitTests
             _fruits.Push("date");
 
             // Assert
-            _fruits.Count().ShouldBe(4);
+            _fruits.Count.ShouldBe(4);
         }
     }
 }
