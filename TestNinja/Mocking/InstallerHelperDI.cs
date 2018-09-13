@@ -2,16 +2,21 @@
 
 namespace TestNinja.Mocking
 {
-    public class InstallerHelper
+    public class InstallerHelperDI
     {
         private string _setupDestinationFile;
+        private readonly IFileDownloader _fileDownloader;
+
+        public InstallerHelperDI(IFileDownloader fileDownloader = null)
+        {
+            _fileDownloader = fileDownloader ?? new FileDownloader();
+        }
 
         public bool DownloadInstaller(string customerName, string installerName)
         {
-            var client = new WebClient();
             try
             {
-                client.DownloadFile(
+                _fileDownloader.DownloadFile(
                     string.Format("http://example.com/{0}/{1}",
                         customerName,
                         installerName),

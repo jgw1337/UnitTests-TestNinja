@@ -74,6 +74,7 @@
     <Compile Include="FizzBuzzTests.cs" />
     <Compile Include="MathTests.cs" />
     <Compile Include="MockFileReader.cs" />
+    <Compile Include="Mocking\InstallerHelperDITests.cs" />
     <Compile Include="Mocking\OrderServiceTests.cs" />
     <Compile Include="Mocking\VideoServiceDIConstructorInjectionTests.cs" />
     <Compile Include="Mocking\VideoServiceDIMethodInjectionTests.cs" />
