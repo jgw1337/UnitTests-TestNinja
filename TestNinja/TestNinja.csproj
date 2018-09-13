@@ -67,8 +67,10 @@
     <Compile Include="Mocking\FileReader.cs" />
     <Compile Include="Mocking\IFileReader.cs" />
     <Compile Include="Mocking\InstallerHelper.cs" />
+    <Compile Include="Mocking\IVideoRepository.cs" />
     <Compile Include="Mocking\OrderService.cs" />
     <Compile Include="Mocking\Product.cs" />
+    <Compile Include="Mocking\VideoRepository.cs" />
     <Compile Include="Mocking\VideoServiceDIConstructorInjection.cs" />
     <Compile Include="Mocking\VideoServiceDIParameterInjection.cs" />
     <Compile Include="Mocking\VideoServiceDIMethodInjection.cs" />
