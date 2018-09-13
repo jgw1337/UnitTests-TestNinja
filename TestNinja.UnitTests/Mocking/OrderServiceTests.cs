@@ -7,6 +7,18 @@ namespace TestNinja.UnitTests.Mocking
     [TestFixture]
     class OrderServiceTests
     {
+        // The PlaceOrder method interacts with "storage" object
+        // ...so we want to verify proper interaction
+        //
+        //public int PlaceOrder(Order order)
+        //{
+        //    var orderId = _storage.Store(order);
+
+        //    // Some other work
+
+        //    return orderId;
+        //}
+
         [Test]
         public void PlaceOrder_WhenCalled_StoreTheOrder()
         {

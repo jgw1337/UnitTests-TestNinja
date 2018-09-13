@@ -19,6 +19,8 @@ namespace TestNinja.UnitTests.Mocking
             _videoService = new VideoServiceDIConstructorInjection(_fileReader.Object);
         }
 
+        // Test with a Fake/Stub/Mocked object
+        // ...relies on MockFileReader.cs
         [Test]
         public void ReadVideoTitle_EmptyFile_ReturnsError()
         {
@@ -32,6 +34,9 @@ namespace TestNinja.UnitTests.Mocking
             result.ShouldContain("error");
         }
 
+
+        // Test with Mocking Framework (e.g. Moq)
+        // ...which does not rely on external fakes which might be hard-coded and inflexible
         [Test]
         public void ReadVideoTitle_EmptyFileWithMoq_ReturnsError()
         {
