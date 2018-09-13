@@ -1,17 +1,15 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.IO;
 using System.Linq;
 
 namespace TestNinja.Mocking
 {
-    public class VideoService
+    public class VideoServiceDIMethodInjection
     {
-        public string ReadVideoTitle()
+        public string ReadVideoTitle(IFileReader fileReader)
         {
-            var str = File.ReadAllText("video.txt");
+            var str = fileReader.Read("video.txt");
             var video = JsonConvert.DeserializeObject<Video>(str);
             if (video == null)
                 return "Error parsing the video.";
@@ -35,17 +33,5 @@ namespace TestNinja.Mocking
                 return String.Join(",", videoIds);
             }
         }
-    }
-
-    public class Video
-    {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public bool IsProcessed { get; set; }
-    }
-
-    public class VideoContext : DbContext
-    {
-        public DbSet<Video> Videos { get; set; }
     }
 }

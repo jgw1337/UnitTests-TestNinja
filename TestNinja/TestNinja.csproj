@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,6 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -62,9 +64,14 @@
     <Compile Include="Fundamentals\Stack.cs" />
     <Compile Include="Mocking\BookingHelper.cs" />
     <Compile Include="Mocking\EmployeeController.cs" />
+    <Compile Include="Mocking\FileReader.cs" />
+    <Compile Include="Mocking\IFileReader.cs" />
     <Compile Include="Mocking\InstallerHelper.cs" />
     <Compile Include="Mocking\OrderService.cs" />
     <Compile Include="Mocking\Product.cs" />
+    <Compile Include="Mocking\VideoServiceDIConstructorInjection.cs" />
+    <Compile Include="Mocking\VideoServiceDIParameterInjection.cs" />
+    <Compile Include="Mocking\VideoServiceDIMethodInjection.cs" />
     <Compile Include="Mocking\VideoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
