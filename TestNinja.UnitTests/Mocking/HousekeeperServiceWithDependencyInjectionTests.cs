@@ -19,6 +19,7 @@ namespace TestNinja.UnitTests.Mocking
 
         private Housekeeper _housekeeper;
         private readonly DateTime _statementDate = new DateTime(2000, 1, 1);
+        private string _statementFilename = "filename";
 
         [SetUp]
         public void SetUp()
@@ -70,7 +71,48 @@ namespace TestNinja.UnitTests.Mocking
 
             // Assert
             Mock.Get(_statementGenerator)
-                .Verify(sg => sg.SaveStatement(_housekeeper.Oid, _housekeeper.FullName, _statementDate), Times.Never);
+                .Verify(
+                    sg => sg.SaveStatement(_housekeeper.Oid, _housekeeper.FullName, _statementDate),
+                    Times.Never
+                );
+        }
+
+        [Test]
+        public void SendStatementEmails_WhenCalled_InteractsWithEmailSender()
+        {
+            // Arrange
+            Mock.Get(_statementGenerator)
+                .Setup(sg => sg.SaveStatement(_housekeeper.Oid, _housekeeper.FullName, _statementDate))
+                .Returns(_statementFilename);
+
+            // Act
+            _service.SendStatementEmails(_statementDate);
+
+            // Assert
+            Mock.Get(_emailSender)
+                .Verify(es => es.EmailFile(_housekeeper.Email, _housekeeper.StatementEmailBody, _statementFilename, It.IsAny<string>()));
+        }
+
+        [Test]
+        [TestCase(null)]
+        [TestCase("")]
+        [TestCase(" ")]
+        public void SendStatementEmails_StatementFileNameHasProblems_InteractsWithEmailSender(string statementFilename)
+        {
+            // Arrange
+            Mock.Get(_statementGenerator)
+                .Setup(sg => sg.SaveStatement(_housekeeper.Oid, _housekeeper.FullName, _statementDate))
+                .Returns(statementFilename);
+
+            // Act
+            _service.SendStatementEmails(_statementDate);
+
+            // Assert
+            Mock.Get(_emailSender)
+                .Verify(
+                    es => es.EmailFile(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()),
+                    Times.Never
+                );
         }
     }
 }
