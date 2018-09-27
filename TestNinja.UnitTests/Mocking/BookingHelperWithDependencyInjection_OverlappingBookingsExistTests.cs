@@ -42,7 +42,7 @@ namespace TestNinja.UnitTests.Mocking
             {
                 Id = 1,
                 ArrivalDate = Before(_bookingExisting.ArrivalDate, days: 2),
-                DepartureDate = Before(_bookingExisting.ArrivalDate),
+                DepartureDate = Before(_bookingExisting.ArrivalDate)
             };
 
             // Act
@@ -60,7 +60,7 @@ namespace TestNinja.UnitTests.Mocking
             {
                 Id = 1,
                 ArrivalDate = Before(_bookingExisting.ArrivalDate),
-                DepartureDate = After(_bookingExisting.ArrivalDate),
+                DepartureDate = After(_bookingExisting.ArrivalDate)
             };
 
             // Act
@@ -78,7 +78,7 @@ namespace TestNinja.UnitTests.Mocking
             {
                 Id = 1,
                 ArrivalDate = Before(_bookingExisting.ArrivalDate),
-                DepartureDate = After(_bookingExisting.DepartureDate),
+                DepartureDate = After(_bookingExisting.DepartureDate)
             };
 
             // Act
@@ -96,7 +96,7 @@ namespace TestNinja.UnitTests.Mocking
             {
                 Id = 1,
                 ArrivalDate = After(_bookingExisting.ArrivalDate),
-                DepartureDate = Before(_bookingExisting.DepartureDate),
+                DepartureDate = Before(_bookingExisting.DepartureDate)
             };
 
             // Act
@@ -114,7 +114,7 @@ namespace TestNinja.UnitTests.Mocking
             {
                 Id = 1,
                 ArrivalDate = After(_bookingExisting.ArrivalDate),
-                DepartureDate = After(_bookingExisting.DepartureDate),
+                DepartureDate = After(_bookingExisting.DepartureDate)
             };
 
             // Act
@@ -132,7 +132,7 @@ namespace TestNinja.UnitTests.Mocking
             {
                 Id = 1,
                 ArrivalDate = After(_bookingExisting.DepartureDate),
-                DepartureDate = After(_bookingExisting.DepartureDate, days: 2),
+                DepartureDate = After(_bookingExisting.DepartureDate, days: 2)
             };
 
             // Act
@@ -143,7 +143,7 @@ namespace TestNinja.UnitTests.Mocking
         }
 
         [Test]
-        public void BookingsOverlapButCurrentBookingIsCancelled_ReturnsExistingBookingReference()
+        public void BookingsOverlapButCurrentBookingIsCancelled_ReturnsEmptyString()
         {
             // Arrange
             var bookingCurrent = new Booking
@@ -152,6 +152,28 @@ namespace TestNinja.UnitTests.Mocking
                 ArrivalDate = After(_bookingExisting.ArrivalDate),
                 DepartureDate = After(_bookingExisting.DepartureDate),
                 Status = "Cancelled"
+            };
+
+            // Act
+            var result = BookingHelperWithDependencyInjection.OverlappingBookingsExist(bookingCurrent, _repository);
+
+            // Assert
+            result.ShouldBeEmpty();
+        }
+
+        [Test]
+        public void BookingsOverlapButExistingBookingIsCancelled_ReturnsEmptyString()
+        {
+            // Arrange
+            Mock.Get(_repository)
+                .Setup(r => r.GetActiveBookings(1))
+                .Returns(new List<Booking> { }.AsQueryable());
+
+            var bookingCurrent = new Booking
+            {
+                Id = 1,
+                ArrivalDate = After(_bookingExisting.ArrivalDate),
+                DepartureDate = After(_bookingExisting.DepartureDate)
             };
 
             // Act
