@@ -53,8 +53,6 @@ namespace TestNinja.UnitTests.Mocking
         [Test]
         public void SendStatementEmails_WhenCalled_InteractsWithStatementGenerator()
         {
-            // Arrange
-
             // Act
             _service.SendStatementEmails(_statementDate);
 
@@ -86,11 +84,6 @@ namespace TestNinja.UnitTests.Mocking
         [Test]
         public void SendStatementEmails_WhenCalled_InteractsWithEmailSender()
         {
-            // Arrange
-            Mock.Get(_statementGenerator)
-                .Setup(sg => sg.SaveStatement(_housekeeper.Oid, _housekeeper.FullName, _statementDate))
-                .Returns(_statementFilename);
-
             // Act
             _service.SendStatementEmails(_statementDate);
 
