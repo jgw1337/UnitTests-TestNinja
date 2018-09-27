@@ -76,6 +76,7 @@
     <Compile Include="MockFileReader.cs" />
     <Compile Include="Mocking\BookingHelperWithDependencyInjection_OverlappingBookingsExistTests.cs" />
     <Compile Include="Mocking\EmployeeControllerWithDependencyInjectionTests.cs" />
+    <Compile Include="Mocking\HousekeeperServiceWithDependencyInjectionTests.cs" />
     <Compile Include="Mocking\InstallerHelperWithDependencyInjectionTests.cs" />
     <Compile Include="Mocking\OrderServiceTests.cs" />
     <Compile Include="Mocking\VideoServiceWithDependencyInjectionConstructorInjectionTests.cs" />
