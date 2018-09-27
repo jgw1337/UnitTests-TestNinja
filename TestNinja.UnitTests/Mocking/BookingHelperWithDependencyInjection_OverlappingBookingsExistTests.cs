@@ -88,6 +88,81 @@ namespace TestNinja.UnitTests.Mocking
             result.ShouldBe(_bookingExisting.Reference);
         }
 
+        [Test]
+        public void BookingStartsAndEndsDuringExistingBooking_ReturnsExistingBookingReference()
+        {
+            // Arrange
+            var bookingCurrent = new Booking
+            {
+                Id = 1,
+                ArrivalDate = After(_bookingExisting.ArrivalDate),
+                DepartureDate = Before(_bookingExisting.DepartureDate),
+            };
+
+            // Act
+            var result = BookingHelperWithDependencyInjection.OverlappingBookingsExist(bookingCurrent, _repository);
+
+            // Assert
+            result.ShouldBe(_bookingExisting.Reference);
+        }
+
+        [Test]
+        public void BookingStartsDuringAndEndsAfterExistingBooking_ReturnsExistingBookingReference()
+        {
+            // Arrange
+            var bookingCurrent = new Booking
+            {
+                Id = 1,
+                ArrivalDate = After(_bookingExisting.ArrivalDate),
+                DepartureDate = After(_bookingExisting.DepartureDate),
+            };
+
+            // Act
+            var result = BookingHelperWithDependencyInjection.OverlappingBookingsExist(bookingCurrent, _repository);
+
+            // Assert
+            result.ShouldBe(_bookingExisting.Reference);
+        }
+
+        [Test]
+        public void BookingStartsAndEndsAfterExistingBooking_ReturnsEmptyString()
+        {
+            // Arrange
+            var bookingCurrent = new Booking
+            {
+                Id = 1,
+                ArrivalDate = After(_bookingExisting.DepartureDate),
+                DepartureDate = After(_bookingExisting.DepartureDate, days: 2),
+            };
+
+            // Act
+            var result = BookingHelperWithDependencyInjection.OverlappingBookingsExist(bookingCurrent, _repository);
+
+            // Assert
+            result.ShouldBeEmpty();
+        }
+
+        [Test]
+        public void BookingsOverlapButCurrentBookingIsCancelled_ReturnsExistingBookingReference()
+        {
+            // Arrange
+            var bookingCurrent = new Booking
+            {
+                Id = 1,
+                ArrivalDate = After(_bookingExisting.ArrivalDate),
+                DepartureDate = After(_bookingExisting.DepartureDate),
+                Status = "Cancelled"
+            };
+
+            // Act
+            var result = BookingHelperWithDependencyInjection.OverlappingBookingsExist(bookingCurrent, _repository);
+
+            // Assert
+            result.ShouldBeEmpty();
+        }
+
+        // These private helper classes help reduce dependency on magic numbers
+        // and helps reveal the intent of our unit tests
         #region Private Helper Methods
 
         private DateTime ArriveOn(int year, int month, int day)
@@ -107,9 +182,9 @@ namespace TestNinja.UnitTests.Mocking
             return dateTime.AddDays(-days);
         }
 
-        private DateTime After(DateTime dateTime)
+        private DateTime After(DateTime dateTime, int days = 1)
         {
-            return dateTime.AddDays(1);
+            return dateTime.AddDays(days);
         }
 
         #endregion Private Helper Methods
