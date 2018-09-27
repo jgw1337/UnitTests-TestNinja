@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 namespace TestNinja.Mocking
 {
-    public class VideoServiceDIConstructorInjection
+    public class VideoServiceWithDependencyInjectionConstructorInjection
     {
         private IFileReader _fileReader;
         private IVideoRepository _videoRepository;
 
-        public VideoServiceDIConstructorInjection(IFileReader fileReader = null, IVideoRepository videoRepository = null)
+        public VideoServiceWithDependencyInjectionConstructorInjection(IFileReader fileReader = null, IVideoRepository videoRepository = null)
         {
             _fileReader = fileReader ?? new FileReader();
             _videoRepository = videoRepository ?? new VideoRepository();

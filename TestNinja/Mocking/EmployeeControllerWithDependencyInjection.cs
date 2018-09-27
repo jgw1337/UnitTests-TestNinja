@@ -1,10 +1,10 @@
 ﻿namespace TestNinja.Mocking
 {
-    public class EmployeeControllerDI
+    public class EmployeeControllerWithDependencyInjection
     {
         private IEmployeeStorage _empStore;
 
-        public EmployeeControllerDI(IEmployeeStorage empStore = null)
+        public EmployeeControllerWithDependencyInjection(IEmployeeStorage empStore = null)
         {
             _empStore = empStore ?? new EmployeeStorage();
         }

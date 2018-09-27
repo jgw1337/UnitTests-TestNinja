@@ -5,11 +5,11 @@ using System.Linq;
 
 namespace TestNinja.Mocking
 {
-    public class VideoServiceDIParameterInjection
+    public class VideoServiceWithDependencyInjectionParameterInjection
     {
         public IFileReader FileReader { get; set; }
 
-        public VideoServiceDIParameterInjection()
+        public VideoServiceWithDependencyInjectionParameterInjection()
         {
             FileReader = new FileReader();
         }

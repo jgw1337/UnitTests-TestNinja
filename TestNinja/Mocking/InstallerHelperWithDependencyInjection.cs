@@ -2,12 +2,12 @@
 
 namespace TestNinja.Mocking
 {
-    public class InstallerHelperDI
+    public class InstallerHelperWithDependencyInjection
     {
         private string _setupDestinationFile;
         private readonly IFileDownloader _fileDownloader;
 
-        public InstallerHelperDI(IFileDownloader fileDownloader = null)
+        public InstallerHelperWithDependencyInjection(IFileDownloader fileDownloader = null)
         {
             _fileDownloader = fileDownloader ?? new FileDownloader();
         }

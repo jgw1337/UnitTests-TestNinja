@@ -6,17 +6,17 @@ using TestNinja.Mocking;
 namespace TestNinja.UnitTests.Mocking
 {
     [TestFixture]
-    class EmployeeControllerDITests
+    class EmployeeControllerWithDependencyInjectionTests
     {
         private Mock<IEmployeeStorage> _empStore;
-        private EmployeeControllerDI _controller;
+        private EmployeeControllerWithDependencyInjection _controller;
 
         [SetUp]
         public void SetUp()
         {
             // Arrange
             _empStore = new Mock<IEmployeeStorage>();
-            _controller = new EmployeeControllerDI(_empStore.Object);
+            _controller = new EmployeeControllerWithDependencyInjection(_empStore.Object);
         }
 
         [Test]

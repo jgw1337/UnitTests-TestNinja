@@ -7,17 +7,17 @@ using TestNinja.Mocking;
 namespace TestNinja.UnitTests.Mocking
 {
     [TestFixture]
-    class InstallerHelperDITests
+    class InstallerHelperWithDependencyInjectionTests
     {
         private Mock<IFileDownloader> _fileDownloader;
-        private InstallerHelperDI _installerHelper;
+        private InstallerHelperWithDependencyInjection _installerHelper;
 
         [SetUp]
         public void SetUp()
         {
             // Arrange
             _fileDownloader = new Mock<IFileDownloader>();
-            _installerHelper = new InstallerHelperDI(_fileDownloader.Object);
+            _installerHelper = new InstallerHelperWithDependencyInjection(_fileDownloader.Object);
         }
 
         [Test]

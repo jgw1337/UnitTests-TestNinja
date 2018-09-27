@@ -5,13 +5,13 @@ using TestNinja.Mocking;
 namespace TestNinja.UnitTests.Mocking
 {
     [TestFixture]
-    class VideoServiceDIMethodInjectionTests
+    class VideoServiceWithDependencyInjectionMethodInjectionTests
     {
         [Test]
         public void ReadVideoTitle_EmptyFile_ReturnsError()
         {
             // Arrange
-            var service = new VideoServiceDIMethodInjection();
+            var service = new VideoServiceWithDependencyInjectionMethodInjection();
 
             // Act
             var result = service.ReadVideoTitle(new MockFileReader());

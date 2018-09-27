@@ -7,11 +7,11 @@ using TestNinja.Mocking;
 namespace TestNinja.UnitTests.Mocking
 {
     [TestFixture]
-    class VideoServiceDIConstructorInjectionTests
+    class VideoServiceWithDependencyInjectionConstructorInjectionTests
     {
         private Mock<IFileReader> _fileReader;
         private Mock<IVideoRepository> _videoRepository;
-        private VideoServiceDIConstructorInjection _videoService;
+        private VideoServiceWithDependencyInjectionConstructorInjection _videoService;
 
         [SetUp]
         public void SetUp()
@@ -19,7 +19,7 @@ namespace TestNinja.UnitTests.Mocking
             // Arrange
             _fileReader = new Mock<IFileReader>();
             _videoRepository = new Mock<IVideoRepository>();
-            _videoService = new VideoServiceDIConstructorInjection(_fileReader.Object, _videoRepository.Object);
+            _videoService = new VideoServiceWithDependencyInjectionConstructorInjection(_fileReader.Object, _videoRepository.Object);
         }
 
         // Test with a Fake/Stub/Mocked object
@@ -28,7 +28,7 @@ namespace TestNinja.UnitTests.Mocking
         public void ReadVideoTitle_EmptyFile_ReturnsError()
         {
             // Arrange
-            var service = new VideoServiceDIConstructorInjection(new MockFileReader());
+            var service = new VideoServiceWithDependencyInjectionConstructorInjection(new MockFileReader());
 
             // Act
             var result = service.ReadVideoTitle();

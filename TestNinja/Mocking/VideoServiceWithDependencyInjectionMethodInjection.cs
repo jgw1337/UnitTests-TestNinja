@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace TestNinja.Mocking
 {
-    public class VideoServiceDIMethodInjection
+    public class VideoServiceWithDependencyInjectionMethodInjection
     {
         public string ReadVideoTitle(IFileReader fileReader)
         {
