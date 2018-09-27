@@ -107,6 +107,25 @@ namespace TestNinja.UnitTests.Mocking
             VerifyEmailSenderInteractionNeverOccurs();
         }
 
+        [Test]
+        public void SendStatementEmails_EmailSenderFails_DisplaysMessageBox()
+        {
+            // Arrange
+            Mock.Get(_emailSender)
+                .Setup(es =>
+                    es.EmailFile(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
+                .Throws<Exception>();
+
+            // Act
+            _service.SendStatementEmails(_statementDate);
+
+            // Assert
+            VerifyMessageBoxInteractionOccurs();
+        }
+
+
+        #region Private Helper Methods
+
         private void VerifyEmailSenderInteractionNeverOccurs()
         {
             Mock.Get(_emailSender)
@@ -122,5 +141,11 @@ namespace TestNinja.UnitTests.Mocking
                 .Verify(es => es.EmailFile(_housekeeper.Email, _housekeeper.StatementEmailBody, _statementFilename, It.IsAny<string>()));
         }
 
+        private void VerifyMessageBoxInteractionOccurs()
+        {
+            Mock.Get(_messageBox).Verify(mb => mb.Show(It.IsAny<string>(), It.IsAny<string>(), MessageBoxButtons.OK));
+        }
+
+        #endregion Private Helper Methods
     }
 }
