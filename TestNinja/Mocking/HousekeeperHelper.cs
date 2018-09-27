@@ -96,9 +96,9 @@ namespace TestNinja.Mocking
         OK
     }
 
-    public class XtraMessageBox : IXtraMessageBox
+    public static class XtraMessageBox
     {
-        public void Show(string s, string housekeeperStatements, MessageBoxButtons ok)
+        public static void Show(string s, string housekeeperStatements, MessageBoxButtons ok)
         {
         }
     }
