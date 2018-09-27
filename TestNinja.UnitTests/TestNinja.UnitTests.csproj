@@ -74,7 +74,7 @@
     <Compile Include="FizzBuzzTests.cs" />
     <Compile Include="MathTests.cs" />
     <Compile Include="MockFileReader.cs" />
-    <Compile Include="Mocking\BookingHelperWithDependencyInjectionTests.cs" />
+    <Compile Include="Mocking\BookingHelperWithDependencyInjection_OverlappingBookingsExistTests.cs" />
     <Compile Include="Mocking\EmployeeControllerWithDependencyInjectionTests.cs" />
     <Compile Include="Mocking\InstallerHelperWithDependencyInjectionTests.cs" />
     <Compile Include="Mocking\OrderServiceTests.cs" />

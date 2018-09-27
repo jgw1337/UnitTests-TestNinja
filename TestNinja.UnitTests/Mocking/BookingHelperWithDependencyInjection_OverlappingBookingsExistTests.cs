@@ -52,7 +52,6 @@ namespace TestNinja.UnitTests.Mocking
             result.ShouldBeEmpty();
         }
 
-
         [Test]
         public void BookingStartsBeforeAndEndsDuringExistingBooking_ReturnsExistingBookingReference()
         {
@@ -62,6 +61,24 @@ namespace TestNinja.UnitTests.Mocking
                 Id = 1,
                 ArrivalDate = Before(_bookingExisting.ArrivalDate),
                 DepartureDate = After(_bookingExisting.ArrivalDate),
+            };
+
+            // Act
+            var result = BookingHelperWithDependencyInjection.OverlappingBookingsExist(bookingCurrent, _repository);
+
+            // Assert
+            result.ShouldBe(_bookingExisting.Reference);
+        }
+
+        [Test]
+        public void BookingStartsBeforeAndEndsAfterExistingBooking_ReturnsExistingBookingReference()
+        {
+            // Arrange
+            var bookingCurrent = new Booking
+            {
+                Id = 1,
+                ArrivalDate = Before(_bookingExisting.ArrivalDate),
+                DepartureDate = After(_bookingExisting.DepartureDate),
             };
 
             // Act
